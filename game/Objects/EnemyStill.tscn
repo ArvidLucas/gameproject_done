@@ -4,7 +4,7 @@
 [ext_resource path="res://Images/blank.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 32, 32 )
 
 [node name="EnemyStill" type="StaticBody2D" groups=[
 "Enemy",
@@ -16,6 +16,8 @@ HP = 5
 damage = 1
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -9.53674e-007, 9.53674e-007 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

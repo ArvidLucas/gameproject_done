@@ -8,9 +8,15 @@
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 992, 512 )
+position = Vector2( 896, 512 )
 HP = 2
 speed = 25000
 
 [node name="EnemyStill" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1088, 512 )
+
+[node name="EnemyStill2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1088, 256 )
+
+[node name="EnemyStill3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1088, 384 )
