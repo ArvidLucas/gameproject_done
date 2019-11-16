@@ -2,12 +2,15 @@ extends KinematicBody2D
 
 signal player_shoot
 
+export (int) var HP
 export (int) var speed
 export (int) var drag
 export (int) var bullet_speed
 export (int) var bullet_damage
+export (int) var rebound
 var input = Vector2()
 var velocity = Vector2()
+var inv = 0
 
 func _ready():
 #warning-ignore:return_value_discarded
@@ -33,7 +36,26 @@ func _process(delta):
 		get_tree().quit()
 
 func _physics_process(delta):
-	velocity += input
-	velocity /= drag
+	if HP > 0:
+		velocity += input
+		velocity /= drag
 #warning-ignore:return_value_discarded
-	move_and_slide(velocity * delta)
+		move_and_slide(velocity * delta)
+		for i in range(0, get_slide_count()):
+			if !inv and get_slide_collision(i).collider.is_in_group("Enemy"):
+				HP -= get_slide_collision(i).collider.damage
+				inv = rebound
+				if HP <= 0:
+					hide()
+		if inv > 0:
+			inv -= delta
+			if inv < 0:
+				inv = 0
+		if 4 * inv > 3 * rebound:
+			hide()
+		elif 2 * inv > rebound:
+			show()
+		elif 4 * inv > rebound:
+			hide()
+		else:
+			show()

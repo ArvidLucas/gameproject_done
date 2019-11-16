@@ -10,10 +10,12 @@ radius = 16.0
 "Player",
 ]]
 script = ExtResource( 1 )
+HP = 10
 speed = 20000
 drag = 2
 bullet_speed = 1000
 bullet_damage = 1
+rebound = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
