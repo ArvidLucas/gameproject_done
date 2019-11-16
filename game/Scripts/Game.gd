@@ -1,6 +1,7 @@
 extends Node
 
 var player_bullet
+var enemy_bullet
 
 func _ready():
 	player_bullet = load("res://Objects/PlayerBullet.tscn")
@@ -12,3 +13,7 @@ func _player_shoot(bullet_speed, bullet_damage):
 	bullet.velocity *= bullet_speed
 	bullet.damage = bullet_damage
 	add_child(bullet)
+
+func _enemy_shoot(bullet_speed, bullet_damage, pos):
+	
+	pass

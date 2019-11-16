@@ -4,4 +4,3 @@
 
 [node name="Menu" type="Node"]
 script = ExtResource( 1 )
-
