@@ -22,5 +22,4 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-editor_draw_drag_margin = true
 

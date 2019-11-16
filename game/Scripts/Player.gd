@@ -9,6 +9,7 @@ var input = Vector2()
 var velocity = Vector2()
 
 func _ready():
+#warning-ignore:return_value_discarded
 	connect("player_shoot", get_tree().get_root().get_node("Game"), "_player_shoot")
 
 #warning-ignore:unused_argument
@@ -33,4 +34,5 @@ func _process(delta):
 func _physics_process(delta):
 	velocity += input
 	velocity /= drag
+#warning-ignore:return_value_discarded
 	move_and_slide(velocity * delta)
