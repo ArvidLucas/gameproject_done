@@ -5,6 +5,7 @@ signal player_shoot
 export (int) var speed
 export (int) var drag
 export (int) var bullet_speed
+export (int) var bullet_damage
 var input = Vector2()
 var velocity = Vector2()
 
@@ -27,7 +28,7 @@ func _process(delta):
 	else:
 		input.y = 0
 	if Input.is_action_just_pressed("player_shoot"):
-		emit_signal("player_shoot", bullet_speed)
+		emit_signal("player_shoot", bullet_speed, bullet_damage)
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 

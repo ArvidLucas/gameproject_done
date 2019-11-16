@@ -1,7 +1,13 @@
 extends KinematicBody2D
 
 var velocity = Vector2()
+var damage
+var col
 
 func _physics_process(delta):
 #warning-ignore:return_value_discarded
-	move_and_collide(velocity * delta)
+	col = move_and_collide(velocity * delta)
+	if  col != null:
+		if col.collider.is_in_group("Enemy"):
+			col.collider.damage(damage)
+		queue_free()
