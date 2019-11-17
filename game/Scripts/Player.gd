@@ -42,11 +42,8 @@ func _physics_process(delta):
 #warning-ignore:return_value_discarded
 		move_and_slide(velocity * delta)
 		for i in range(0, get_slide_count()):
-			if !inv and get_slide_collision(i).collider.is_in_group("Enemy"):
-				HP -= get_slide_collision(i).collider.damage
-				inv = rebound
-				if HP <= 0:
-					hide()
+			if get_slide_collision(i).collider.is_in_group("Enemy"):
+				harm(get_slide_collision(i).collider.damage)
 		if inv > 0:
 			inv -= delta
 			if inv < 0:
@@ -59,3 +56,11 @@ func _physics_process(delta):
 			hide()
 		else:
 			show()
+
+func harm(hurt):
+	if !inv:
+		HP -= hurt
+		inv = rebound
+		if HP <= 0:
+			get_tree().paused = true
+			hide()
