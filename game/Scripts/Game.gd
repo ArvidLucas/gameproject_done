@@ -16,6 +16,7 @@ func _player_shoot(bullet_speed, bullet_damage):
 	bullet.damage = bullet_damage
 	add_child(bullet)
 
+
 func _enemy_shoot(bullet_speed, bullet_damage, pos):
 	bullet = enemy_bullet.instance()
 	bullet.position = pos

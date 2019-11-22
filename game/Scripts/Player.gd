@@ -46,7 +46,7 @@ func _physics_process(delta):
 #warning-ignore:return_value_discarded
 		move_and_slide(velocity * delta)
 		for i in range(0, get_slide_count()):
-			if get_slide_collision(i).collider.is_in_group("Enemy"):
+			if get_slide_collision(i).collider.is_in_group("Enemy") or get_slide_collision(i).collider.is_in_group("Enemy_Bullet"):
 				harm(get_slide_collision(i).collider.damage)
 		if inv > 0:
 			inv -= delta
