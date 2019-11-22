@@ -9,7 +9,7 @@ extents = Vector2( 64, 64 )
 [node name="EnemyStill" type="StaticBody2D" groups=[
 "Enemy",
 ]]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 3
 script = ExtResource( 1 )
 HP = 5
