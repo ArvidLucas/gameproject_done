@@ -6,8 +6,11 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
 
-[node name="PlayerBullet" type="KinematicBody2D"]
-collision_layer = 0
+[node name="PlayerBullet" type="KinematicBody2D" groups=[
+"Player_Bullet",
+"Player_Any",
+]]
+collision_layer = 16
 collision_mask = 6
 script = ExtResource( 1 )
 

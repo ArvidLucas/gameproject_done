@@ -31,6 +31,9 @@ func gen_map():
 		s[i] *= d_to_prime(invert(d))
 	for i in range(0, rooms):
 		set_room(map[i], s[i])
+	for i in range(1, rooms - 1):
+		set_enemies(map[i], randi() % 1)
+	set_goal(map[rooms - 1], 0)
 
 func d_to_pos(d):
 	var pos = Vector2(0, 0)
@@ -88,7 +91,19 @@ func set_room(pos, s):
 	room = load("res://Rooms/Room" + string + ".tscn").instance()
 	room.position = pos * CELL_SIZE
 	add_child(room)
-	
+
+func set_enemies(pos, n):
+	room = load("res://Enemies/Enemies" + str(n) + ".tscn").instance()
+	room.position = pos * CELL_SIZE
+	room.position.x += CELL_SIZE / 4
+	room.position.y += CELL_SIZE / 4
+	add_child(room)
+
+func set_goal(pos, n):
+	room = load("res://Rooms/Goal" + str(n) + ".tscn").instance()
+	room.position = pos * CELL_SIZE
+	add_child(room)
+
 func _player_shoot(bullet_speed, bullet_damage):
 	bullet = player_bullet.instance()
 	bullet.position = $Player.position
@@ -105,3 +120,6 @@ func _enemy_shoot(bullet_speed, bullet_damage, pos):
 	bullet.velocity *= bullet_speed
 	bullet.damage = bullet_damage
 	add_child(bullet)
+
+func _goal_entered(body):
+	get_tree().quit()
