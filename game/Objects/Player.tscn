@@ -4,17 +4,21 @@
 [ext_resource path="res://Images/blank.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.0
+radius = 64.0
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
+"Player_Any",
 ]]
+pause_mode = 2
+collision_mask = 7
 script = ExtResource( 1 )
 HP = 10
 speed = 20000
 drag = 2
 bullet_speed = 1000
 bullet_damage = 1
+fire_rate = 4
 rebound = 1
 
 [node name="Sprite" type="Sprite" parent="."]
