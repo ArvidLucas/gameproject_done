@@ -27,7 +27,7 @@ func gen_map():
 	for i in range(0, rooms):
 		set_room(map[i], s[i])
 	for i in range(0, powerups):
-		set_powerup(map[randi() % (rooms - 1)], randi() % 3)
+		set_powerup(map[randi() % (rooms - 2) + 1], randi() % 3)
 	for i in range(1, rooms - 1):
 		set_enemies(map[i], randi() % 1)
 	set_goal(map[rooms - 1], 0)

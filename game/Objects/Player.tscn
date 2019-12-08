@@ -4,7 +4,7 @@
 [ext_resource path="res://Images/blank.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 64.0
+radius = 32.0
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -22,8 +22,7 @@ fire_rate = 4
 rebound = 1
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -9.53674e-007, 9.53674e-007 )
-scale = Vector2( 2, 2 )
+position = Vector2( 0, 9.53674e-007 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

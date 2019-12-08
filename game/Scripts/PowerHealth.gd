@@ -7,5 +7,5 @@ func _ready():
 
 func _body_entered(body):
 	if body.is_in_group("Player"):
-		body.damage += power
+		body.HP += power
 		queue_free()
