@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Basic player ship.png-5e18641f8763b18eb03eb50733a67021.stex"
+path="res://.import/Enemy_Ship.png-1cd305fdb5d995ab95fbfbb8108aa3f7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Basic player ship.png"
-dest_files=[ "res://.import/Basic player ship.png-5e18641f8763b18eb03eb50733a67021.stex" ]
+source_file="res://Images/Enemy_Ship.png"
+dest_files=[ "res://.import/Enemy_Ship.png-1cd305fdb5d995ab95fbfbb8108aa3f7.stex" ]
 
 [params]
 

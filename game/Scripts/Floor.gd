@@ -15,10 +15,17 @@ func gen_map():
 	var pos = Vector2(0, 0)
 	var map = [pos]
 	var s = [1]
+	var con = true
 	for i in range(1, rooms):
 		while (is_in_map(pos, map)):
 			d = randi() % 4
 			pos += d_to_pos(d)
+			if is_in_map(pos, map) and con:
+				con = false
+				if s[find_in_map(pos, map)] % d_to_prime(invert(d)):
+					s[find_in_map(pos+d_to_pos(invert(d)), map)] *= d_to_prime(d)
+					s[find_in_map(pos, map)] *= d_to_prime(invert(d))
+		con = true
 		prev = find_in_map(pos+d_to_pos(invert(d)), map)
 		s[prev] *= d_to_prime(d)
 		map.append(pos)
