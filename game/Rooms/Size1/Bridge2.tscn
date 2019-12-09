@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Map/BlankMap.res" type="TileSet" id=1]
+
+[node name="Room0" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_layer = 4
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( 2359317, 0, 0, 2359322, 0, 0, 2424853, 0, 0, 2424858, 0, 0, 2490389, 0, 0, 2490394, 0, 0, 2555925, 0, 0, 2555930, 0, 0, 2621461, 0, 0, 2621466, 0, 0, 2686997, 0, 0, 2687002, 0, 0, 2752533, 0, 0, 2752538, 0, 0, 2818069, 0, 0, 2818074, 0, 0, 2883605, 0, 0, 2883610, 0, 0, 2949141, 0, 0, 2949146, 0, 0, 3014677, 0, 0, 3014682, 0, 0, 3080213, 0, 0, 3080218, 0, 0 )

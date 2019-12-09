@@ -5,8 +5,9 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
-rooms = 9
+rooms = 10
 powerups = 3
+size = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1536, 1536 )

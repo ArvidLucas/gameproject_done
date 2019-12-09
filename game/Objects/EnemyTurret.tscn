@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/EnemyTurret.gd" type="Script" id=1]
-[ext_resource path="res://Images/blank.png" type="Texture" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+[ext_resource path="res://Images/Enemy_Turret.png" type="Texture" id=2]
 
 [node name="EnemyTurret" type="StaticBody2D" groups=[
 "Enemy",
@@ -19,8 +16,9 @@ bullet_damage = 1
 fire_rate = 1
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 9.53674e-007 )
+position = Vector2( 2.75, 43.5 )
+scale = Vector2( 0.18, 0.18 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 14, 32, 26, 20, 26, 3, 3, -32, -3, -32, -26, 3, -26, 20, -14, 32 )

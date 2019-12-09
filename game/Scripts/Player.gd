@@ -18,6 +18,7 @@ var shoot = 1
 func _ready():
 #warning-ignore:return_value_discarded
 	connect("player_shoot", get_tree().get_root().get_node("Game"), "_player_shoot")
+	$HUD/Health.text = "HP: " + str(HP)
 
 func _process(delta):
 	if Input.is_action_pressed("player_right") and not Input.is_action_pressed("player_left"):
@@ -48,11 +49,11 @@ func _physics_process(delta):
 		move_and_slide(velocity * delta)
 		unitvel = velocity.normalized()
 		if unitvel.y > 0:
-			set_rotation(atan(-unitvel.x / unitvel.y) + PI)
+			$Sprite.set_rotation(atan(-unitvel.x / unitvel.y) + PI)
 		elif unitvel.y < 0:
-			set_rotation(atan(-unitvel.x / unitvel.y))
-		else:
-			set_rotation(unitvel.x * PI/2)
+			$Sprite.set_rotation(atan(-unitvel.x / unitvel.y))
+		elif unitvel.x != 0:
+			$Sprite.set_rotation(unitvel.x * PI/2)
 		for i in range(0, get_slide_count()):
 			if get_slide_collision(i).collider.is_in_group("Enemy") or get_slide_collision(i).collider.is_in_group("Enemy_Bullet"):
 				harm(get_slide_collision(i).collider.damage)
@@ -61,17 +62,18 @@ func _physics_process(delta):
 			if inv < 0:
 				inv = 0
 		if 4 * inv > 3 * rebound:
-			hide()
+			$Sprite.hide()
 		elif 2 * inv > rebound:
-			show()
+			$Sprite.show()
 		elif 4 * inv > rebound:
-			hide()
+			$Sprite.hide()
 		else:
-			show()
+			$Sprite.show()
 
 func harm(hurt):
 	if !inv:
 		HP -= hurt
+		$HUD/Health.text = "HP: " + str(HP)
 		inv = rebound
 		if HP <= 0:
 			get_tree().paused = true
