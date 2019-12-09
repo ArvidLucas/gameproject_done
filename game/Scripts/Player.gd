@@ -11,6 +11,7 @@ export (int) var fire_rate
 export (int) var rebound
 var input = Vector2()
 var velocity = Vector2()
+var unitvel = Vector2()
 var inv = 0
 var shoot = 1
 
@@ -45,6 +46,13 @@ func _physics_process(delta):
 		velocity /= drag
 #warning-ignore:return_value_discarded
 		move_and_slide(velocity * delta)
+		unitvel = velocity.normalized()
+		if unitvel.y > 0:
+			set_rotation(atan(-unitvel.x / unitvel.y) + PI)
+		elif unitvel.y < 0:
+			set_rotation(atan(-unitvel.x / unitvel.y))
+		else:
+			set_rotation(unitvel.x * PI/2)
 		for i in range(0, get_slide_count()):
 			if get_slide_collision(i).collider.is_in_group("Enemy") or get_slide_collision(i).collider.is_in_group("Enemy_Bullet"):
 				harm(get_slide_collision(i).collider.damage)
