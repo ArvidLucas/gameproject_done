@@ -10,7 +10,8 @@ func _ready():
 func _body_entered(body):
 	if body.is_in_group("Player"):
 		body.bullet_damage += damage
-		body.bullet_speed += speed
-		if (body.fire_rate > 1):
+		if (body.bullet_speed > speed):
+			body.bullet_speed += speed
+		if (body.fire_rate > rate):
 			body.fire_rate += rate
 		queue_free()

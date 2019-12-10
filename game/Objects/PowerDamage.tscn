@@ -11,7 +11,7 @@ collision_layer = 8
 script = ExtResource( 1 )
 damage = 1
 rate = -1
-speed = 250
+speed = -250
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 4.76837e-007 )

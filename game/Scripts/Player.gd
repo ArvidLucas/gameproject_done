@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal player_shoot
+signal die
 
 export (int) var HP
 export (int) var speed
@@ -18,6 +19,7 @@ var shoot = 1
 func _ready():
 #warning-ignore:return_value_discarded
 	connect("player_shoot", get_tree().get_root().get_node("Game"), "_player_shoot")
+	connect("die", get_tree().get_root().get_node("Game"), "_player_die")
 	update_HP()
 
 func _process(delta):
@@ -38,8 +40,6 @@ func _process(delta):
 		shoot = 0
 	elif shoot < 1:
 		shoot += delta * fire_rate
-	if Input.is_action_just_pressed("escape"):
-		get_tree().quit()
 
 func _physics_process(delta):
 	if HP > 0:
@@ -75,8 +75,7 @@ func harm(hurt):
 		update_HP()
 		inv = rebound
 		if HP <= 0:
-			get_tree().paused = true
-			hide()
+			emit_signal("die")
 
 func update_HP():
 	$HUD/Health.text = "HP: " + str(HP)

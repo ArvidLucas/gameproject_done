@@ -9,7 +9,7 @@ var diff
 func _ready():
 	CELL_SIZE = get_parent().CELL_SIZE
 	size = get_parent().size
-	diff = get_parent().difficulty
+	diff = get_parent().get_difficulty()
 	gen_map()
 
 func gen_map():
@@ -39,7 +39,7 @@ func gen_map():
 	for i in range(0, rooms):
 		set_room(map[i], s[i])
 	for i in range(0, powerups):
-		set_powerup(map[randi() % (rooms - 2) + 1], randi() % 4)
+		set_powerup(map[randi() % int(rooms - 2) + 1], randi() % 4)
 	for i in range(1, rooms - 1):
 		set_enemies(map[i], randi() % 6)
 	set_goal(map[rooms - 1], 0)

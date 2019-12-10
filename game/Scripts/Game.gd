@@ -6,40 +6,54 @@ export (int) var size
 var CELL_SIZE = 2038
 var queue_new_floor
 var depth
-var difficulty
 var player_bullet
 var enemy_bullet
 var bullet
 var map
+var rseed
 
 func _ready():
 	player_bullet = load("res://Objects/PlayerBullet.tscn")
 	enemy_bullet = load("res://Objects/EnemyBullet.tscn")
-	VisualServer.set_default_clear_color(Color(0))
 	queue_new_floor = false
-	depth = 0
-	new_floor()
+	if ProjectSettings.get("load"):
+		load_game()
+		seed(rseed)
+		new_floor()
+	else:
+		depth = 1
+		new_seed()
+		save_game()
+		new_floor()
 
 func _process(delta):
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene("res://Menu/Menu.tscn")
 	if queue_new_floor:
 		queue_new_floor = false
 		map.queue_free()
-		rooms += 10
-		powerups += 4
+		depth += 1
+		rooms = depth * 10
+		powerups = depth * 4
 		$Player.position = Vector2(CELL_SIZE/2, CELL_SIZE/2)
+		save_game()
 		new_floor()
 
-func new_floor():
-	depth += 1
-	match depth:
-		1:
-			difficulty = 1
-		3:
-			difficulty = 2
+func new_seed():
 	randomize()
+	rseed = randi()
+	seed(rseed)
+
+func new_floor():
 	map = load("res://Rooms/Size" + str(size) + "/Floor.tscn").instance()
 	map.name = "Floor"
 	add_child(map)
+
+func get_difficulty():
+	if depth <= 2:
+		return 1
+	if depth >= 3:
+		return 2
 
 func _player_shoot(bullet_speed, bullet_damage):
 	bullet = player_bullet.instance()
@@ -71,3 +85,47 @@ func vect_to_player(pos):
 
 func _goal_entered(body):
 	queue_new_floor = true
+
+func _player_die():
+	var save_data = {
+		"depth" : 0
+	}
+	var save_file = File.new()
+	save_file.open("user://savegame.save", File.WRITE)
+	save_file.store_line(to_json(save_data))
+	save_file.close()
+	get_tree().change_scene("res://Menu/Menu.tscn")
+
+func save_game():
+	var save_data = {
+		"seed" : rseed,
+		"depth" : depth,
+		"HP" : $Player.HP,
+		"speed" : $Player.speed,
+		"bullet_damage" : $Player.bullet_damage,
+		"bullet_speed" : $Player.bullet_speed,
+		"fire_rate" : $Player.fire_rate,
+		"rebound" : $Player.rebound
+	}
+	var save_file = File.new()
+	save_file.open("user://savegame.save", File.WRITE)
+	save_file.store_line(to_json(save_data))
+	save_file.close()
+
+func load_game():
+	var save_data
+	var save_file = File.new()
+	save_file.open("user://savegame.save", File.READ)
+	save_data = parse_json(save_file.get_as_text())
+	rseed = save_data["seed"]
+	depth = save_data["depth"]
+	rooms = rooms * depth
+	powerups = powerups * depth
+	$Player.HP = save_data["HP"]
+	$Player.update_HP()
+	$Player.speed = save_data["speed"]
+	$Player.bullet_damage = save_data["bullet_damage"]
+	$Player.bullet_speed = save_data["bullet_speed"]
+	$Player.fire_rate = save_data["fire_rate"]
+	$Player.rebound = save_data["rebound"]
+	save_file.close()
