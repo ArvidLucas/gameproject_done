@@ -4,7 +4,7 @@
 [ext_resource path="res://Objects/EnemyTurret.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 768, 768 )
+extents = Vector2( 640, 640 )
 
 [node name="Enemies" type="Node2D"]
 script = ExtResource( 1 )
