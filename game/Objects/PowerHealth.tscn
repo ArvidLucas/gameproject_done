@@ -9,7 +9,8 @@ radius = 16.0
 [node name="PowerHealth" type="Area2D"]
 collision_layer = 8
 script = ExtResource( 1 )
-power = 5
+heal = 10
+rebound = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 4.76837e-007 )

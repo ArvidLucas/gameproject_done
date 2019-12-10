@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="gameproject_done"
 run/main_scene="res://Menu/Menu.tscn"
-config/icon="res://Images/Blank.png"
+config/icon="res://Images/Black.png"
 
 [display]
 
@@ -62,4 +62,5 @@ player_shoot={
 
 [rendering]
 
+environment/default_clear_color=Color( 0.301961, 0.301961, 0.301961, 1 )
 environment/default_environment="res://default_env.tres"

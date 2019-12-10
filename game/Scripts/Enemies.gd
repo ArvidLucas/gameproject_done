@@ -8,5 +8,7 @@ func _ready():
 func _body_entered(body):
 	if body.is_in_group("Player"):
 		active = true
-	if body.is_in_group("Player_Bullet") and !active:
+	elif body.is_in_group("Player_Bullet") and !active:
+		body.queue_free()
+	elif body.is_in_group("Enemy_Bullet") and !active:
 		body.queue_free()

@@ -5,4 +5,4 @@
 [node name="Goal0" type="Node2D"]
 
 [node name="Goal" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1536, 1536 )
+position = Vector2( 1024, 1024 )

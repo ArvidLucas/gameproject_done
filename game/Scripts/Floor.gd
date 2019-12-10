@@ -1,17 +1,20 @@
 extends Node
 
-const CELL_SIZE = 3072
+var CELL_SIZE
 var string = ""
 var size
 var room
+var diff
 
 func _ready():
+	CELL_SIZE = get_parent().CELL_SIZE
+	size = get_parent().size
+	diff = get_parent().difficulty
 	gen_map()
 
 func gen_map():
-	var rooms = self.get_parent().rooms
-	var powerups = self.get_parent().powerups
-	size = self.get_parent().size
+	var rooms = get_parent().rooms
+	var powerups = get_parent().powerups
 	var d
 	var prev
 	var pos = Vector2(0, 0)
@@ -36,9 +39,9 @@ func gen_map():
 	for i in range(0, rooms):
 		set_room(map[i], s[i])
 	for i in range(0, powerups):
-		set_powerup(map[randi() % (rooms - 2) + 1], randi() % 3)
+		set_powerup(map[randi() % (rooms - 2) + 1], randi() % 4)
 	for i in range(1, rooms - 1):
-		set_enemies(map[i], randi() % 1)
+		set_enemies(map[i], randi() % 6)
 	set_goal(map[rooms - 1], 0)
 
 func d_to_pos(d):
@@ -95,11 +98,13 @@ func s_to_str(s):
 func get_powerup(n):
 	match n:
 		0:
-			string = "Damage"
+			string = "Fire"
 		1:
 			string = "Health"
 		2:
 			string = "Speed"
+		3:
+			string = "Damage"
 
 func set_room(pos, s):
 	s_to_str(s)
@@ -115,10 +120,8 @@ func set_room(pos, s):
 		add_child(room)
 
 func set_enemies(pos, n):
-	room = load("res://Rooms/Size" + str(size) + "/Enemies" + str(n) + ".tscn").instance()
+	room = load("res://Enemies/Size" + str(size) + "/Enemies" + str(diff) + str(n) + ".tscn").instance()
 	room.position = pos * CELL_SIZE
-	room.position.x += CELL_SIZE / 4
-	room.position.y += CELL_SIZE / 4
 	add_child(room)
 
 func set_goal(pos, n):

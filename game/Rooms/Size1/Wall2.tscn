@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Map/BlankMap.res" type="TileSet" id=1]
+[ext_resource path="res://Map/Map.res" type="TileSet" id=1]
 
 [node name="Room0" type="Node2D"]
 
@@ -9,4 +9,4 @@ tile_set = ExtResource( 1 )
 collision_layer = 4
 collision_mask = 7
 format = 1
-tile_data = PoolIntArray( 2293782, 0, 0, 2293783, 0, 0, 2293784, 0, 0, 2293785, 0, 0 )
+tile_data = PoolIntArray( 1769486, 0, 0, 1769487, 0, 0, 1769488, 0, 0, 1769489, 0, 0 )

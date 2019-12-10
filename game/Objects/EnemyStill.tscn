@@ -1,23 +1,46 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/EnemyStill.gd" type="Script" id=1]
-[ext_resource path="res://Images/blank.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/FORCED SQUARE.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Images/Black.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 32 )
 
-[node name="EnemyStill" type="StaticBody2D" groups=[
+[node name="EnemyStill" type="KinematicBody2D" groups=[
 "Enemy",
 ]]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource( 1 )
 HP = 5
-damage = 1
+speed = 5
+distance = 300
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 9.53674e-007 )
-texture = ExtResource( 2 )
+[node name="HUD" type="Control" parent="."]
+margin_left = -64.0
+margin_top = -64.0
+margin_right = 64.0
+margin_bottom = 64.0
+theme = SubResource( 2 )
+
+[node name="Health" type="Label" parent="HUD"]
+margin_left = 32.0
+margin_top = 100.0
+margin_right = 96.0
+margin_bottom = 121.0
+text = "HP: "
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
+position = Vector2( 0, 9.53674e-007 )
+texture = ExtResource( 3 )

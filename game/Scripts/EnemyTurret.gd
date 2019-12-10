@@ -4,7 +4,6 @@ signal shoot
 signal orient
 
 export (int) var HP
-export (int) var damage
 export (int) var bullet_speed
 export (int) var bullet_damage
 export (int) var fire_rate
@@ -13,6 +12,7 @@ var shoot = 0
 func _ready():
 	connect("shoot", get_tree().get_root().get_node("Game"), "_enemy_shoot")
 	connect("orient", get_tree().get_root().get_node("Game"), "_enemy_orient")
+	update_HP()
 
 func _process(delta):
 	if get_parent().active:
@@ -27,5 +27,12 @@ func _physics_process(delta):
 
 func harm(hurt):
 	HP -= hurt
+	update_HP()
 	if HP <= 0:
 		queue_free()
+
+func update_HP():
+	$HUD/Health.text = "HP: " + str(HP)
+
+func orientate(theta):
+	$Shape.set_rotation(theta)

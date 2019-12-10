@@ -6,9 +6,9 @@
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 rooms = 10
-powerups = 3
+powerups = 4
 size = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1536, 1536 )
+position = Vector2( 1016.8, 1024 )
 speed = 25000
