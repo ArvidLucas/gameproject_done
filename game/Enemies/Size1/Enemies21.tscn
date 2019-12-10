@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 768, 768 )
 
-[node name="Enemies0" type="Node2D"]
+[node name="Enemies" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Area" type="Area2D" parent="."]
@@ -42,7 +42,7 @@ bullet_damage = 2
 
 [node name="EnemyTurret5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1024, 1024 )
-HP = 30
+HP = 50
 bullet_speed = 250
 bullet_damage = 2
 fire_rate = 10
