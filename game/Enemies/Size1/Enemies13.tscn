@@ -36,10 +36,12 @@ HP = 3
 [node name="EnemyTurret" parent="." instance=ExtResource( 4 )]
 position = Vector2( 512, 512 )
 HP = 3
-fire_rate = 2
+fire_rate = 5
+bullet_spread = 90.0
 
 [node name="EnemyTurret2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1536, 1536 )
 HP = 3
-fire_rate = 2
+bullet_count = 5
+bullet_spread = 90.0
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

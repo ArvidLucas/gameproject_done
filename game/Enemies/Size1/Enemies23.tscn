@@ -35,5 +35,7 @@ fire_rate = 10
 position = Vector2( 768, 512 )
 HP = 40
 bullet_speed = 250
-fire_rate = 10
+fire_rate = 5
+bullet_count = 2
+bullet_spread = 30.0
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

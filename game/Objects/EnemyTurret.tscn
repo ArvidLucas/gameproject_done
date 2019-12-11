@@ -21,6 +21,8 @@ HP = 5
 bullet_speed = 1000
 bullet_damage = 1
 fire_rate = 1
+bullet_count = 1
+bullet_spread = 20.0
 
 [node name="HUD" type="Control" parent="."]
 margin_left = -64.0

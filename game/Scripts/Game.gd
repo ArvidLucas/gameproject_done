@@ -55,29 +55,49 @@ func get_difficulty():
 		return 1
 	return 2
 
-func _player_shoot(bullet_speed, bullet_damage):
+func _player_shoot(speed, damage):
 	bullet = player_bullet.instance()
+	bullet.damage = damage
 	bullet.position = $Player.position
 	bullet.velocity = ($Player/Cam.get_global_mouse_position() - $Player.position).normalized()
-	bullet.velocity *= bullet_speed
-	bullet.damage = bullet_damage
+	bullet.velocity *= speed
 	add_child(bullet)
 	move_child(bullet, 1)
 
-func _enemy_shoot(bullet_speed, bullet_damage, pos):
+func _enemy_shoot(speed, dam, pos, count, spread):
+	var angle = angle_to_player(pos)
+	if count == 0:
+		spawn_enemy_bullet(angle, speed, dam, pos)
+	else:
+		var i = 0
+		while (i <= spread * 2):
+			spawn_enemy_bullet(angle_to_player(pos) - spread + i, speed, dam, pos)
+			i += spread * 2 / count
+
+func spawn_enemy_bullet(angle, speed, damage, pos):
 	bullet = enemy_bullet.instance()
+	bullet.damage = damage
 	bullet.position = pos
-	bullet.velocity = vect_to_player(pos).normalized()
-	bullet.velocity *= bullet_speed
-	bullet.damage = bullet_damage
+	bullet.velocity = Vector2(cos(angle), sin(angle))
+	bullet.velocity *= speed
 	add_child(bullet)
 	move_child(bullet, 1)
 
 func _enemy_orient(enemy, pos):
-	enemy.orientate(enemy.get_angle_to($Player.position))
+	enemy.orientate(angle_to_player(pos))
 
 func vect_to_player(pos):
-	return ($Player.position - pos)
+	return $Player.position - pos
+
+func angle_to_player(pos):
+	var vect = vect_to_player(pos)
+	if vect.x > 0:
+		return atan(vect.y / vect.x)
+	if vect.x < 0:
+		return atan(vect.y / vect.x) + PI
+	if vect.y > 0:
+		return Vector2(0, 1)
+	return Vector2(0, -1)
 
 func _goal_entered(body):
 	queue_new_floor = true

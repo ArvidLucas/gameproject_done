@@ -29,7 +29,9 @@ position = Vector2( 512, 512 )
 HP = 10
 bullet_speed = 250
 bullet_damage = 2
-fire_rate = 10
+fire_rate = 5
+bullet_count = 2
+bullet_spread = 30.0
 
 [node name="EnemyTurret2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1536, 512 )
@@ -43,7 +45,9 @@ position = Vector2( 1536, 1536 )
 HP = 10
 bullet_speed = 250
 bullet_damage = 2
-fire_rate = 10
+fire_rate = 5
+bullet_count = 2
+bullet_spread = 30.0
 
 [node name="EnemyTurret4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 1536 )

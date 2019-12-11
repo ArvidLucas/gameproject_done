@@ -41,5 +41,7 @@ fire_rate = 10
 [node name="EnemyTurret2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1536, 512 )
 bullet_speed = 250
-fire_rate = 10
+fire_rate = 5
+bullet_count = 2
+bullet_spread = 30.0
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

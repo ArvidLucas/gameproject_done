@@ -25,22 +25,24 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="EnemyTurret" parent="." instance=ExtResource( 3 )]
-position = Vector2( 512, 512 )
+position = Vector2( 416, 399.34 )
 bullet_speed = 250
-fire_rate = 2
+bullet_count = 2
+bullet_spread = 10.0
 
 [node name="EnemyTurret2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1536, 512 )
+position = Vector2( 1632, 399.34 )
 bullet_speed = 250
 fire_rate = 2
 
 [node name="EnemyTurret3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1536, 1536 )
+position = Vector2( 1632, 1636 )
 bullet_speed = 250
-fire_rate = 2
+bullet_count = 2
+bullet_spread = 10.0
 
 [node name="EnemyTurret4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 512, 1536 )
+position = Vector2( 416, 1636 )
 bullet_speed = 250
 fire_rate = 2
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

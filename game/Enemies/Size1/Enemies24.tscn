@@ -51,4 +51,6 @@ HP = 50
 bullet_speed = 2500
 bullet_damage = 5
 fire_rate = 10
+bullet_count = 3
+bullet_spread = 60.0
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

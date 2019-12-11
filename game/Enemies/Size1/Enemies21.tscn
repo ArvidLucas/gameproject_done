@@ -28,21 +28,29 @@ shape = SubResource( 1 )
 position = Vector2( 1024, 768 )
 HP = 20
 bullet_damage = 2
+bullet_count = 5
+bullet_spread = 90.0
 
 [node name="EnemyTurret2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1280, 1024 )
 HP = 20
 bullet_damage = 2
+bullet_count = 5
+bullet_spread = 90.0
 
 [node name="EnemyTurret3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1024, 1280 )
 HP = 20
 bullet_damage = 2
+bullet_count = 5
+bullet_spread = 90.0
 
 [node name="EnemyTurret4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 768, 1024 )
 HP = 20
 bullet_damage = 2
+bullet_count = 5
+bullet_spread = 90.0
 
 [node name="EnemyTurret5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1024, 1024 )
@@ -50,4 +58,6 @@ HP = 50
 bullet_speed = 250
 bullet_damage = 2
 fire_rate = 10
+bullet_count = 8
+bullet_spread = 180.0
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]
