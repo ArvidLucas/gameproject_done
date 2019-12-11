@@ -1,8 +1,10 @@
 extends Node
 
 export (int) var rooms
+export (int) var rooms_increase
 export (int) var powerups
-export (int) var size
+export (int) var powerups_increase
+var size = 1
 var CELL_SIZE = 2038
 var queue_new_floor
 var depth
@@ -27,14 +29,12 @@ func _ready():
 		new_floor()
 
 func _process(delta):
-	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene("res://Menu/Menu.tscn")
 	if queue_new_floor:
 		queue_new_floor = false
 		map.queue_free()
 		depth += 1
-		rooms = depth * 10
-		powerups = depth * 4
+		rooms += rooms_increase
+		powerups += powerups_increase
 		$Player.position = Vector2(CELL_SIZE/2, CELL_SIZE/2)
 		save_game()
 		new_floor()
@@ -48,20 +48,21 @@ func new_floor():
 	map = load("res://Rooms/Size" + str(size) + "/Floor.tscn").instance()
 	map.name = "Floor"
 	add_child(map)
+	move_child(map, 0)
 
 func get_difficulty():
-	if depth <= 2:
+	if depth <= 3:
 		return 1
-	if depth >= 3:
-		return 2
+	return 2
 
 func _player_shoot(bullet_speed, bullet_damage):
 	bullet = player_bullet.instance()
 	bullet.position = $Player.position
-	bullet.velocity = ($Player/Camera2D.get_global_mouse_position() - $Player.position).normalized()
+	bullet.velocity = ($Player/Cam.get_global_mouse_position() - $Player.position).normalized()
 	bullet.velocity *= bullet_speed
 	bullet.damage = bullet_damage
 	add_child(bullet)
+	move_child(bullet, 1)
 
 func _enemy_shoot(bullet_speed, bullet_damage, pos):
 	bullet = enemy_bullet.instance()
@@ -70,15 +71,10 @@ func _enemy_shoot(bullet_speed, bullet_damage, pos):
 	bullet.velocity *= bullet_speed
 	bullet.damage = bullet_damage
 	add_child(bullet)
+	move_child(bullet, 1)
 
 func _enemy_orient(enemy, pos):
-	var vector = vect_to_player(pos)
-	if vector.y > 0:
-		enemy.orientate(atan(-vector.x / vector.y) + PI)
-	elif vector.y < 0:
-		enemy.orientate(atan(-vector.x / vector.y))
-	elif vector.x != 0:
-		enemy.orientate(vector.x * PI/2)
+	enemy.orientate(enemy.get_angle_to($Player.position))
 
 func vect_to_player(pos):
 	return ($Player.position - pos)
@@ -88,7 +84,7 @@ func _goal_entered(body):
 
 func _player_die():
 	var save_data = {
-		"depth" : 0
+		"depth" : -1
 	}
 	var save_file = File.new()
 	save_file.open("user://savegame.save", File.WRITE)
@@ -100,6 +96,8 @@ func save_game():
 	var save_data = {
 		"seed" : rseed,
 		"depth" : depth,
+		"rooms" : rooms,
+		"powerups" : powerups,
 		"HP" : $Player.HP,
 		"speed" : $Player.speed,
 		"bullet_damage" : $Player.bullet_damage,
@@ -119,8 +117,8 @@ func load_game():
 	save_data = parse_json(save_file.get_as_text())
 	rseed = save_data["seed"]
 	depth = save_data["depth"]
-	rooms = rooms * depth
-	powerups = powerups * depth
+	rooms = save_data["rooms"]
+	powerups = save_data["powerups"]
 	$Player.HP = save_data["HP"]
 	$Player.update_HP()
 	$Player.speed = save_data["speed"]

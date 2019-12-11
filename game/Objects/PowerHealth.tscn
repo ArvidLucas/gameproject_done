@@ -9,7 +9,7 @@ radius = 16.0
 [node name="PowerHealth" type="Area2D"]
 collision_layer = 8
 script = ExtResource( 1 )
-heal = 10
+heal = 5
 rebound = 1
 
 [node name="Sprite" type="Sprite" parent="."]

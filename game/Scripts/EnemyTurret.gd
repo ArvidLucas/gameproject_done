@@ -35,4 +35,4 @@ func update_HP():
 	$HUD/Health.text = "HP: " + str(HP)
 
 func orientate(theta):
-	$Shape.set_rotation(theta)
+	$Shape.set_rotation(theta + PI/2)

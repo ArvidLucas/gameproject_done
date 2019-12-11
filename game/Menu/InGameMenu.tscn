@@ -1,0 +1,85 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Fonts/FORCED SQUARE.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Menu/InGameMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Menu/ResumeButton.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Menu/MainMenuButton.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="InGameMenu" type="Panel"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 360.0
+margin_top = 360.0
+margin_right = -360.0
+margin_bottom = -360.0
+theme = SubResource( 5 )
+custom_styles/panelf = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
+custom_styles/panelnc = SubResource( 3 )
+script = ExtResource( 2 )
+
+[node name="ResumeButton" type="Button" parent="."]
+margin_left = 160.0
+margin_top = 120.0
+margin_right = 520.0
+margin_bottom = 240.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 0.466667, 0.466667, 0.466667, 1 )
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Resume"
+script = ExtResource( 3 )
+
+[node name="MainMenuButton" type="Button" parent="."]
+margin_left = 680.0
+margin_top = 120.0
+margin_right = 1040.0
+margin_bottom = 240.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 0.466667, 0.466667, 0.466667, 1 )
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Main Menu"
+script = ExtResource( 4 )

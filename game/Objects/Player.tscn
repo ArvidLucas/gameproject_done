@@ -15,13 +15,8 @@ default_font = SubResource( 1 )
 "Player",
 "Player_Any",
 ]]
-pause_mode = 2
-z_index = 1
 collision_mask = 7
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 HP = 10
 speed = 20000
 drag = 2
@@ -44,7 +39,7 @@ margin_right = 859.0
 margin_bottom = 498.0
 text = "HP: "
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Cam" type="Camera2D" parent="."]
 current = true
 
 [node name="Shape" type="CollisionPolygon2D" parent="."]

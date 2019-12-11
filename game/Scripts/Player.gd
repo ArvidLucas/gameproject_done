@@ -48,12 +48,7 @@ func _physics_process(delta):
 #warning-ignore:return_value_discarded
 		move_and_slide(velocity * delta)
 		unitvel = velocity.normalized()
-		if unitvel.y > 0:
-			$Shape.set_rotation(atan(-unitvel.x / unitvel.y) + PI)
-		elif unitvel.y < 0:
-			$Shape.set_rotation(atan(-unitvel.x / unitvel.y))
-		elif unitvel.x != 0:
-			$Shape.set_rotation(unitvel.x * PI/2)
+		$Shape.set_rotation(get_angle_to(position + unitvel) + PI/2)
 		if inv > 0:
 			inv -= delta
 			if inv < 0:

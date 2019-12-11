@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Enemies.gd" type="Script" id=1]
-[ext_resource path="res://Objects/EnemyStill.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Objects/EnemyTurret.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Rooms/Size1/Gate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/EnemyStill.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/EnemyTurret.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 640 )
 
 [node name="Enemies" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Gate" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="Area" type="Area2D" parent="."]
 position = Vector2( 1024, 1024 )
@@ -21,23 +25,23 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
 shape = SubResource( 1 )
 
-[node name="EnemyStill" parent="." instance=ExtResource( 2 )]
+[node name="EnemyStill" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 512 )
 HP = 3
 
-[node name="EnemyStill2" parent="." instance=ExtResource( 2 )]
+[node name="EnemyStill2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1536, 512 )
 HP = 3
 
-[node name="EnemyStill3" parent="." instance=ExtResource( 2 )]
+[node name="EnemyStill3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 1536 )
 HP = 3
 
-[node name="EnemyStill4" parent="." instance=ExtResource( 2 )]
+[node name="EnemyStill4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1536, 1536 )
 HP = 3
 
-[node name="EnemyTurret" parent="." instance=ExtResource( 3 )]
+[node name="EnemyTurret" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1024, 1024 )
 HP = 10
 fire_rate = 6
