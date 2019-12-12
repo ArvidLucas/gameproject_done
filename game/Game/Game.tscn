@@ -16,7 +16,7 @@ powerups_increase = 2
 pause_mode = 2
 stream = ExtResource( 2 )
 autoplay = true
-bus = "Music"
+bus = "InGame"
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1016.8, 1024 )
