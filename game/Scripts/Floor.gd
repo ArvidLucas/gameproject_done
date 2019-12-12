@@ -114,8 +114,6 @@ func set_room(pos, s):
 	for d in range(0, 4):
 		if s % d_to_prime(d):
 			room = load("res://Rooms/Size" + str(size) + "/Wall" + str(d) + ".tscn").instance()
-		else:
-			room = load("res://Rooms/Size" + str(size) + "/Bridge" + str(d) + ".tscn").instance()
 		room.position = pos * CELL_SIZE
 		add_child(room)
 
