@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Music/InGame.wav" type="AudioStream" id=2]
-[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Menu/InGameMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SFX/Death_Sound.wav" type="AudioStream" id=3]
+[ext_resource path="res://Objects/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/InGameMenu.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -12,15 +13,21 @@ rooms_increase = 5
 powerups = 4
 powerups_increase = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 2 )
 autoplay = true
 bus = "InGame"
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Death" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 3 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1016.8, 1024 )
 speed = 25000
 
-[node name="InGameMenu" parent="." instance=ExtResource( 4 )]
+[node name="InGameMenu" parent="." instance=ExtResource( 5 )]
 visible = false

@@ -36,6 +36,7 @@ func _process(delta):
 	else:
 		input.y = 0
 	if shoot >= 1 and Input.is_action_pressed("player_shoot"):
+		$Fire.play()
 		emit_signal("player_shoot", bullet_speed, bullet_damage)
 		shoot = 0
 	elif shoot < 1:
@@ -66,6 +67,7 @@ func _physics_process(delta):
 
 func harm(hurt):
 	if !inv:
+		$Hit.play()
 		HP -= hurt
 		update_HP()
 		inv = rebound

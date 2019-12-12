@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/EnemyTurret.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/FORCED SQUARE.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Images/Enemy_Turret.png" type="Texture" id=3]
+[ext_resource path="res://SFX/Enemy_Shoot.wav" type="AudioStream" id=2]
+[ext_resource path="res://SFX/Enemy_Hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://Fonts/FORCED SQUARE.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Images/Enemy_Turret.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 2 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
@@ -23,6 +25,15 @@ bullet_damage = 1
 fire_rate = 1
 bullet_count = 1
 bullet_spread = 20.0
+
+[node name="Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
 
 [node name="HUD" type="Control" parent="."]
 margin_left = -64.0
@@ -44,4 +55,4 @@ polygon = PoolVector2Array( 14, 32, 26, 20, 26, 3, 3, -32, -3, -32, -26, 3, -26,
 [node name="Sprite" type="Sprite" parent="Shape"]
 position = Vector2( 2.75, 43.5 )
 scale = Vector2( 0.18, 0.18 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )

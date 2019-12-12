@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/EnemyStill.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/FORCED SQUARE.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Images/Black.png" type="Texture" id=3]
+[ext_resource path="res://SFX/Enemy_Move.wav" type="AudioStream" id=2]
+[ext_resource path="res://SFX/Enemy_Hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://Fonts/FORCED SQUARE.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Images/Black.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-font_data = ExtResource( 2 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
@@ -23,6 +25,14 @@ script = ExtResource( 1 )
 HP = 5
 speed = 5
 distance = 300
+
+[node name="Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "SFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
 
 [node name="HUD" type="Control" parent="."]
 margin_left = -64.0
@@ -43,4 +53,4 @@ shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="CollisionShape2D"]
 position = Vector2( 0, 9.53674e-007 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )

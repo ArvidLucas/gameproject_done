@@ -112,6 +112,9 @@ func _player_die():
 	save_file.close()
 	get_tree().change_scene("res://Menu/Menu.tscn")
 
+func _play_death_sound():
+	$Death.play()
+
 func save_game():
 	var save_data = {
 		"seed" : rseed,
