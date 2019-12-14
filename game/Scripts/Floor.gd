@@ -41,7 +41,7 @@ func gen_map():
 	for i in range(0, powerups):
 		set_powerup(map[randi() % int(rooms - 2) + 1], randi() % 4)
 	for i in range(1, rooms - 1):
-		set_enemies(map[i], randi() % 6)
+		set_enemies(map[i], randi() % 6, i)
 	set_goal(map[rooms - 1], 0)
 
 func d_to_pos(d):
@@ -117,11 +117,12 @@ func set_room(pos, s):
 		room.position = pos * CELL_SIZE
 		add_child(room)
 
-func set_enemies(pos, n):
+func set_enemies(pos, n, i):
 	room = load("res://Enemies/Size" + str(size) + "/Enemies" + str(diff) + str(n) + ".tscn").instance()
 	room.position = pos * CELL_SIZE
+	room.name = "E" + str(i)
 	add_child(room)
-	room.active = false
+	
 
 func set_goal(pos, n):
 	room = load("res://Rooms/Size" + str(size) + "/Goal" + str(n) + ".tscn").instance()

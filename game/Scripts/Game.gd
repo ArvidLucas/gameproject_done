@@ -96,8 +96,8 @@ func angle_to_player(pos):
 	if vect.x < 0:
 		return atan(vect.y / vect.x) + PI
 	if vect.y > 0:
-		return Vector2(0, 1)
-	return Vector2(0, -1)
+		return PI/2
+	return -PI/2
 
 func _goal_entered(body):
 	queue_new_floor = true

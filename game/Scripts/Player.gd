@@ -51,7 +51,7 @@ func _physics_process(delta):
 		unitvel = velocity.normalized()
 		$Shape.set_rotation(get_angle_to(position + unitvel) + PI/2)
 		if inv > 0:
-			inv -= delta
+			inv -= delta * 4
 			if inv < 0:
 				inv = 0
 		for i in range(rebound * 4 + 2, -1, -1):

@@ -9,8 +9,7 @@ radius = 16.0
 [node name="PowerSpeed" type="Area2D"]
 collision_layer = 8
 script = ExtResource( 1 )
-player_boost = 5000
-bullet_boost = 250
+bullet_boost = 500
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 4.76837e-007 )
