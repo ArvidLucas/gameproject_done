@@ -25,6 +25,7 @@ func _physics_process(delta):
 			if col != null and !col.collider.is_in_group("Player_Bullet"):
 				if col.collider.is_in_group("Player"):
 					col.collider.harm(HP)
+				emit_signal("die")
 				queue_free()
 		else:
 			if move:

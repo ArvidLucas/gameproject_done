@@ -8,6 +8,7 @@ func _ready():
 
 func _body_entered(body):
 	if body.is_in_group("Player"):
+		body.play_powerup_sound()
 		body.HP += heal
 		body.rebound += rebound
 		body.update_HP()

@@ -9,6 +9,7 @@ func _ready():
 
 func _body_entered(body):
 	if body.is_in_group("Player"):
+		body.play_powerup_sound()
 		body.bullet_damage += damage
 		if (body.bullet_speed > speed):
 			body.bullet_speed += speed

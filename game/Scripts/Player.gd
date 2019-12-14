@@ -76,3 +76,6 @@ func harm(hurt):
 
 func update_HP():
 	$HUD/Health.text = "HP: " + str(HP)
+
+func play_powerup_sound():
+	$Powerup.play()

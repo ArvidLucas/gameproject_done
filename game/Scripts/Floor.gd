@@ -121,6 +121,7 @@ func set_enemies(pos, n):
 	room = load("res://Enemies/Size" + str(size) + "/Enemies" + str(diff) + str(n) + ".tscn").instance()
 	room.position = pos * CELL_SIZE
 	add_child(room)
+	room.active = false
 
 func set_goal(pos, n):
 	room = load("res://Rooms/Size" + str(size) + "/Goal" + str(n) + ".tscn").instance()

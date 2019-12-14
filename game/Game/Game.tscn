@@ -16,8 +16,9 @@ powerups_increase = 2
 [node name="Music" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 2 )
+volume_db = -6.0
 autoplay = true
-bus = "InGame"
+bus = "Music"
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
